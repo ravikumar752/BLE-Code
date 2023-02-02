@@ -1,0 +1,80 @@
+#include <SoftwareSerial.h>
+
+SoftwareSerial BLE(2, 3); // RX | TX
+
+int LED2 = 13;
+int LED1 = 12;
+int val;
+
+void setup()
+
+{
+
+  Serial.begin(9600);
+
+  BLE.begin(9600);
+
+  pinMode(LED1, OUTPUT);
+  pinMode(LED2, OUTPUT);
+}
+
+void loop()
+
+{
+
+
+
+  if (BLE.available()) {
+
+    val = BLE.read();
+
+    if (val == '1') {
+
+      digitalWrite(LED1, 1);
+      digitalWrite(LED2, 1);
+      delay(100);
+      digitalWrite(LED1, 0);
+      digitalWrite(LED2, 0);
+      delay(100);
+      digitalWrite(LED1, 1);
+      digitalWrite(LED2, 1);
+      delay(100);
+      digitalWrite(LED1, 0);
+      digitalWrite(LED2, 0);
+      delay(100);
+      digitalWrite(LED1, 1);
+      digitalWrite(LED2, 1);
+      delay(100);
+      digitalWrite(LED1, 0);
+      digitalWrite(LED2, 0);
+      delay(100);
+
+    }
+
+    else if (val == '0') {
+      digitalWrite(LED1, 1);
+      digitalWrite(LED2, 1);
+      delay(100);
+      digitalWrite(LED1, 0);
+      digitalWrite(LED2, 0);
+      delay(100);
+      digitalWrite(LED1, 1);
+      digitalWrite(LED2, 1);
+      delay(100);
+      digitalWrite(LED1, 0);
+      digitalWrite(LED2, 0);
+      delay(100);
+      digitalWrite(LED1, 1);
+      digitalWrite(LED2, 1);
+      delay(100);
+      digitalWrite(LED1, 0);
+      digitalWrite(LED2, 0);
+      delay(100);
+
+    }
+
+    else BLE.println("Enter 0 for off or 1 for on :)"); 
+
+  }
+
+}
